@@ -1,0 +1,1 @@
+web: gunicorn reserva-de-tablets.wsgi --log-file -

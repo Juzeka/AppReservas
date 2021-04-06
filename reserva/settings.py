@@ -13,21 +13,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants
+from decouple import config
+from dj_database_url import parse as dburl
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mm6@gop8w%p#n_ts2olnkzq(d+-+9)ep0$qmzw5#6u($iy9+!1'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['reservatablets.herokuapp.com']
 
 
 # Application definition
@@ -40,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #Minhas apps
+    #Apps
     'core.apps.CoreConfig',
     
 ]
@@ -80,13 +76,7 @@ WSGI_APPLICATION = 'reserva.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-    
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-    
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reserva',
@@ -95,7 +85,12 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
     }
+} """
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = {
+ 'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
+
 
 
 # Password validation
@@ -135,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'templates/static')
 ]
