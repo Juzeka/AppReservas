@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% include 'parciais/_head.html' %}
+    <title>{% block titulo %}{% endblock titulo %}</title>
+
+</head>
+
+<body>
+    {% include 'parciais/_header.html' %}
+    
+    {% block main %}
+    {% endblock main %}
+    
+    {% include 'parciais/_footer.html' %}
+</body>
+
+</html>

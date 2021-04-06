@@ -1,0 +1,180 @@
+        li{
+            font-family: 'Cambria';
+            list-style: none;
+            font-size: 40px;
+            color: white;
+        }
+
+        ul{
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        span {
+            color: #BC0E00;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px 0;
+        }
+
+        label {
+            color: #6b6b69;
+        }
+
+        input,
+        select {
+            border: 1px solid #6b6b69 !important;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        button:hover {
+            color: white !important;
+        }
+        footer{
+            background-color: #7c7c7a !important;
+        }
+        .fundo{
+            background-color: #96302b !important;
+        }
+        .header{
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 20px 0 !important;
+        }
+        .menu{
+            display: flex !important;
+        }
+        .menu li{
+            margin-left: 0 !important;
+            margin: 0;
+            padding: 0;
+        }
+        .menu li p{
+            display: block !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .back {
+            background: #96302b;
+            color: white;
+            width: 85vw;
+        }
+
+        .back:hover {
+            background: #c70f01;
+            color: rgb(199, 199, 199) !important;
+        }
+
+        .space {
+            margin-top: 98px !important;
+        }
+
+        .rod {
+            font-family: monospace;
+            font-weight: bold;
+            color: #ced4da !important;;
+        }
+
+        .card-header {
+            text-align: center !important;
+            font-weight: bold;
+            color: #bc0e00;
+            border-bottom: 1px solid #bc0e00 !important;
+        }
+
+        .card-title {
+            color: #bc0e00;
+
+        }
+
+        .table {
+            width: 100% !important;
+            margin-bottom: 1rem !important;
+            color: #343a40 !important;
+        }
+        .table thead th {
+            vertical-align: bottom !important;
+            border-bottom: 2px solid #bc0e00 !important;
+        }
+        .table td, .table th {
+            padding: .75rem !important;
+            vertical-align: top !important;
+            border-top: 1px solid #bc0e00 !important;
+        }
+
+
+        @media (max-width: 750px) {
+            img {
+                width: 90vw;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+            .dis {
+                width: 90vw;
+                margin: 20px auto;
+                padding: 5px auto;
+            }
+
+            .back {
+                background: #bc0e00;
+                color: white;
+                width: 90vw;
+            }
+
+            .space {
+                margin-top: 60px !important;
+            }
+            footer{
+                background-color: #7c7c7a !important;
+                position:relative;
+                bottom: 0 ;
+            }
+            li{
+                font-size: 25px;
+            }
+        }
+        
+
+        @media (max-width: 550px) {
+            img {
+                width: 80vw;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            span {
+                font-size: 14px;
+            }
+
+            .space {
+                margin-top: 60px !important;
+            }
+            footer{
+                background-color: #7c7c7a !important;
+                position:relative;
+                bottom: 0 ;
+            }
+            footer img {
+                width: 100%;
+            }
+            li{
+                font-size: 25px;
+            }
+        }
+        
+     

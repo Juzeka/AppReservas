@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% include 'parciais/_head.html' %}
+    <title>{% block titulo %}Comprovante{% endblock titulo %}</title>
+    
+</head>
+
+<body>
+    {% include 'parciais/_header.html' %}
+
+    {% block main %}
+    
+    <main>
+        <section class="container mt-4">
+            {% if messages %}
+                <div class="row justify-content-center">
+                    {% include 'parciais/_message.html' %}
+                </div>
+            {% endif %}
+            <div class="row justify-content-center">
+                <div class="col-12 mt-1 mb-2">
+                    <span>
+                        <center><a href="{% url 'home'%}" style="color: #7c7c7a;"><h4>Início</h4></a></center>
+                    </span>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="card border-danger mb-4" style="max-width: 25rem;">
+                    <div class="card-header"><h5>Comprovante de Reserva</h5></div>
+                    <div class="card-body ">
+                        <h6 class="card-title">Nome: {{nome}}</h6>
+                        <h6 class="card-title">E-mail: {{email}}</h6>
+                        <h6 class="card-title">Turma: {{turma}}</h6>
+                        <h6 class="card-title">Data: {{data |date:'d/m/y'}}</h6>
+                        <h6 class="card-title">Horário: {{horario}}</h6>
+                        <h6 class="card-title">Quantidade: {{quantidade}}</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    {% endblock main %}
+
+    {% include 'parciais/_footer.html' %}
+</body>
+
+</html>

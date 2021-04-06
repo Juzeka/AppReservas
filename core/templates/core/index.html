@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Diocesano Reservas{% endblock titulo %}
+
+{% block main %}
+
+<main>
+    <section class="container mt-2">
+        <div class="row">
+            {% include 'parciais/_message.html' %}
+            <span class="col-12 small" >Última atualização {{hora_atual}}</span>
+        </div>
+        <form method="POST" action="{% url 'reservar' %}">
+            {% csrf_token %}
+
+            <div class="form-row justify-content-center">
+                <div class="col-12 col-sm-12 col-md-5">
+                    <label for="nome">Nome</label>
+                    {{form.nome}}
+                </div>
+                <div class="col-12 col-sm-12 col-md-4">
+                    <label for="email">E-mail</label>
+                    {{form.email}}
+                </div>
+                <div class="col-12 col-sm-12 col-md-3">
+                    <label for="turma">Turma</label>
+                    {{form.turma}}
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3">
+                    <label for="Data">Data</label>
+                    {{form.data}}
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 offset-md-1">
+                    <label for="horario">Horário</label>
+                    {{form.horario}}
+                </div>
+                <div class="col-12 col-sm-12 col-md-2 offset-md-1">
+                    <label for="quantidade">Quantidade</label>
+                    {{form.quantidade}}
+                </div>
+                <div class="col-11 col-sm-11 col-md-11 mt-4">
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn back">Concluir Reserva</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </section>
+    <div class="container mt-4">
+        {%if somatorio%}
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <span>
+                    <center>
+                        <h3>Calendário de Reservas</h3>
+                    </center>
+                </span>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Data</th>
+                            <th scope="col" class="text-center">Horário</th>
+                            <th scope="col" class="text-center">Quantidades</th>
+
+                        </tr>
+                    </thead>
+                    {% for dado in reservas %}
+                    <tbody>
+                        <tr>
+                            <td class="text-center">{{dado.data |date:'d/m/y'}}</td>
+                            <td class="text-center">{{dado.horario}}</td>
+                            <td class="text-center">{{dado.quantidade}}</td>
+                        </tr>
+                    </tbody>
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+        {%endif%}
+    </div>
+</main>
+
+
+
+{% endblock main %}
