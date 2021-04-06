@@ -9,9 +9,9 @@ ALTERAR: ef5455 -> Cor dos links e cabeçalhos
 #branding h1 a:visited {
     color: #FFFFFF;
 }
-#7c7c7a
+
 #header {
-    background: #96302b;
+    background: #96302b !important;
     color: #FFFFFF;
 }
 
@@ -21,7 +21,7 @@ ALTERAR: ef5455 -> Cor dos links e cabeçalhos
 }
 
 a:link, a:visited {
-    color: #ef5455;
+    color: #666665;
 }
 
 .module h2, .module caption, .inline-group h2 {
@@ -78,7 +78,7 @@ input[type=button]:hover {
 }
 
 #changelist-filter li.selected a {
-    color: #ef5455 !important;
+    color: #70706e !important;
 }
 
 #changelist-filter a:focus,
