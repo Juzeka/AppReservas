@@ -18,4 +18,5 @@ class Reserva(admin.ModelAdmin):
     list_display_links=['id','nome','email','turma','data','horario','quantidade']
     list_editable=['status']
     list_filter=['turma','horario','status']
+    ordering= ['horario']
     
