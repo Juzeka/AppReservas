@@ -1,5 +1,5 @@
 /*
-ALTERAR: 2a3252 -> Cor do topo
+ALTERAR: #96302b -> Cor do topo
 ALTERAR: ef5455 -> Cor dos links e cabeçalhos
 */
 
@@ -9,9 +9,9 @@ ALTERAR: ef5455 -> Cor dos links e cabeçalhos
 #branding h1 a:visited {
     color: #FFFFFF;
 }
-
+#7c7c7a
 #header {
-    background: #2a3252;
+    background: #96302b;
     color: #FFFFFF;
 }
 
@@ -25,27 +25,27 @@ a:link, a:visited {
 }
 
 .module h2, .module caption, .inline-group h2 {
-    background: #ef5455;
+    background: #7c7c7a;
     color: #FFFFFF;
 }
 
 div.breadcrumbs {
-    background: #ef5455;
+    background: #7c7c7a;
     color: #FFFFFF;
 }
 
 .paginator a:link, .paginator a:visited {
-    background: #ef5455 !important;
+    background: #7c7c7a !important;
     color: #FFFFFF;
 }
 
 .paginator a:hover {
-    background: #2a3252 !important;
+    background: #96302b !important;
     color: #FFFFFF;
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
-    background: #ef5455;
+    background: #7c7c7a;
 }
 
 .button.default:active,
@@ -54,15 +54,15 @@ input[type=submit].default:active,
 input[type=submit].default:focus,
 .button.default:hover,
 input[type=submit].default:hover {
-    background: #2a3252;
+    background: #96302b;
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #ef5455;
+    background-color: #7c7c7c;
 }
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #2a3252;
+    background: #96302b;
     color: #FFFFFF;
 }
 .button:active,
@@ -74,7 +74,7 @@ input[type=button]:focus,
 .button:hover,
 input[type=submit]:hover,
 input[type=button]:hover {
-    background-color: #ef5455;
+    background-color: #7c7c7a;
 }
 
 #changelist-filter li.selected a {
@@ -85,11 +85,11 @@ input[type=button]:hover {
 #changelist-filter a:hover,
 #changelist-filter li.selected a:focus,
 #changelist-filter li.selected a:hover {
-    color: #2a3252 !important;
+    color: #96302b !important;
 }
 
 .selector-chosen h2 {
-    background: #ef5455 !important;
+    background: #7c7c7a !important;
     color: #FFFFFF;
 }
 
@@ -97,5 +97,5 @@ a.active.selector-chooseall:focus,
 a.active.selector-clearall:focus,
 a.active.selector-chooseall:hover,
 a.active.selector-clearall:hover {
-    color: #ef5455 !important;
+    color: #7c7c7a !important;
 }
