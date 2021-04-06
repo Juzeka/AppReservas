@@ -19,7 +19,6 @@ def home(request):
     
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
-    queryset = Reserva.objects.raw('SELECT core_reserva.id, core_reserva.nome, core_reserva.email, core_reserva.turma_id, core_reserva.data, core_reserva.horario_id, core_reserva.quantidade, SUM(core_reserva.quantidade) AS quantidade__sum FROM core_reserva WHERE (core_reserva.data = 2021-04-01 OR core_reserva.data >= 2021-04-04) GROUP BY core_reserva.data ORDER BY NULL')
 
     contexto['data_atual']=data_atual
     contexto['hora_atual']=hora_atual
@@ -30,19 +29,9 @@ def home(request):
     qntd_reservada=0
     qntd_atual=0
 
-    somatorio=[]
-    for qs in queryset:
-        disponibilidade = {
-            'data': qs.data,
-            'quantidade': 45-qs.quantidade__sum,
-            'alocados': qs.quantidade__sum 
-        }
-        
-        somatorio.append(disponibilidade)
     if request.method != 'POST':
         form = ReservaForm(request.POST) 
         contexto['form']= form
-        contexto['somatorio'] = somatorio
         return render(request, 'core/index.html',contexto)
     
     return render (request, 'core/index.html',{'somatorio':somatorio})
