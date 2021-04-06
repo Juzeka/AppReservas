@@ -1,1 +1,1 @@
-web: gunicorn reserva-de-tablets.wsgi --log-file -
+web: gunicorn reservadetablets.wsgi --log-file -
