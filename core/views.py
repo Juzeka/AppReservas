@@ -46,14 +46,15 @@ def reservar(request):
     horario =request.POST.get('horario')
     turma = request.POST.get('turma')
     qntd = int(request.POST.get('quantidade'))
+
     rs_date_hous_turma = Reserva.objects.filter(data=data, horario=horario, turma= turma, status=True).exists()
     rs_date = Reserva.objects.filter(data=data, horario=horario, status=True)
     rs_turma = Reserva.objects.filter( turma=turma, status=True).exists()
     rs_status = Reserva.objects.filter(data=data, horario=horario, turma=turma, status=True).exists()
+
     alocado =0
     for s in rs_date:
         alocado+=s.quantidade
-    
     limite= alocado+qntd
 
     if  str(data_atual) > data:
@@ -88,5 +89,4 @@ def reservar(request):
 
 
 def comprovante(request):
-    
     return render (request, 'core/reserva.html')
