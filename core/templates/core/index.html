@@ -62,6 +62,7 @@
                         <tr>
                             <th scope="col" class="text-center">Data</th>
                             <th scope="col" class="text-center">Horário</th>
+                            <th scope="col" class="text-center">Turma</th>
                             <th scope="col" class="text-center">Quantidades</th>
 
                         </tr>
@@ -71,6 +72,7 @@
                         <tr>
                             <td class="text-center">{{dado.data |date:'d/m/y'}}</td>
                             <td class="text-center">{{dado.horario}}</td>
+                            <td class="text-center">{{dado.turma}}</td>
                             <td class="text-center">{{dado.quantidade}}</td>
                         </tr>
                     </tbody>
@@ -80,7 +82,4 @@
         </div>
     </div>
 </main>
-
-
-
 {% endblock main %}
