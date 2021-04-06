@@ -16,7 +16,6 @@ def home(request):
     data_atual = date.today()
     hora_atual = datetime.now().strftime('%H:%M:%S')
     futuro = date.fromordinal(data_atual.toordinal()+3)
-    
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
 
@@ -36,7 +35,6 @@ def home(request):
     
     return render (request, 'core/index.html',{'somatorio':somatorio})
  
-    
 
 
 def reservar(request):
