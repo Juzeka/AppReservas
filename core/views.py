@@ -4,9 +4,7 @@ from .models import Turma,Horario,Reserva
 from .forms import ReservaForm
 from django.contrib import messages
 from django.db.models import Q,Count, Sum
-from datetime import date, datetime
-from django.http import HttpResponse
-from django.urls import reverse
+from datetime import date, datetime,timedelta
 
 
 # Create your views here.
@@ -21,7 +19,7 @@ def home(request):
     
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
-    
+
     for rs in rs_data:
         rs_hora = timedelta(hours=rs.horario.hora_fim.hour, minutes=rs.horario.hora_fim.minute, seconds=rs.horario.hora_fim.second)
         if not rs.data < data_atual:
