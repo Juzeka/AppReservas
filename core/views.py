@@ -22,10 +22,8 @@ def home(request):
 
     for rs in rs_data:
         rs_hora = timedelta(hours=rs.horario.hora_fim.hour, minutes=rs.horario.hora_fim.minute, seconds=rs.horario.hora_fim.second)
-        if not rs.data < data_atual:
+        if rs.data <= data_atual:
             if hora_chek > rs_hora:
-                rs_data.update(status=False)
-        elif rs_data < data_atual:
                 rs_data.update(status=False)
 
     contexto['data_atual']=data_atual
