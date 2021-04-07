@@ -18,6 +18,9 @@ def home(request):
     futuro = date.fromordinal(data_atual.toordinal()+3)
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
+    for rs in rs_data:
+        if rs.data < data_atual:
+            rs_data.update(status=False)
 
     contexto['data_atual']=data_atual
     contexto['hora_atual']=hora_atual
