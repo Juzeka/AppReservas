@@ -13,14 +13,22 @@ from django.urls import reverse
 def home(request):
     contexto = {}
 
+    #Datas e horarios
     data_atual = date.today()
     hora_atual = datetime.now().strftime('%H:%M:%S')
-    futuro = date.fromordinal(data_atual.toordinal()+3)
+    hora= datetime.now()
+    hora_chek = timedelta(hours=hora.hour, minutes= hora.minute, seconds=hora.second)
+    
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
+    
     for rs in rs_data:
-        if rs.data < data_atual:
-            rs_data.update(status=False)
+        rs_hora = timedelta(hours=rs.horario.hora_fim.hour, minutes=rs.horario.hora_fim.minute, seconds=rs.horario.hora_fim.second)
+        if not rs.data < data_atual:
+            if hora_chek > rs_hora:
+                rs_data.update(status=False)
+        else:
+                rs_data.update(status=False)
 
     contexto['data_atual']=data_atual
     contexto['hora_atual']=hora_atual
