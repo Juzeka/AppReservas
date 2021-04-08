@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block titulo%}Login{%endblock%}
+
+{% block main %}
+<div class="container">
+
+	<div class ="row justify-content-center">
+		{% if not user.is_authenticated%}
+		<div class="col-7">
+			<h1 class="mt-3 mb-3 color">Login</h1>
+			<form method="POST" action="{% url 'login' %}">
+				{% csrf_token %}
+				{% include 'parciais/_message.html' %}
+				<div class="form-group">
+					<label>Usuário</label>
+					<input type="text" name="usuario" value="{{request.POST.usuario}}" class="form-control" >
+				</div>
+				
+				<div class="form-group">
+					<label>Senha</label>
+					<input type="password" name="senha" class="form-control" >
+				</div>
+				
+				<button type="submit" class="btn btn-primary mb-3">Login</button>
+				<a href="{% url 'create' %}" class="btn btn-success mb-3">Cadastrar</a>
+			</form>
+		</div>
+		{%else%}
+	</div>
+	<div class ="row mt-4 mb-4 justify-content-center">
+		<div class ="col-12">
+			<h2 class="mt-3 mb-3 color">Você já está logado <strong>{{user.first_name}}</strong></h2>
+			<a href="{% url 'reserva' %}" class="btn btn-primary mb-4">Ir para Reserva</a>
+			<a href="{% url 'logout' %}" class="btn btn-danger mb-4" >Clique para Sair</a>
+		</div>
+	</div>
+    
+	{%endif%}
+</div>
+{% endblock main %}
+	

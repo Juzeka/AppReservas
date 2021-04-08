@@ -1,49 +1,46 @@
 from django.shortcuts import render,redirect
-from core.forms import ReservaForm
 from .models import Turma,Horario,Reserva
 from .forms import ReservaForm
 from django.contrib import messages
 from django.db.models import Q,Count, Sum
-from datetime import date, datetime,timedelta
+from datetime import date, datetime, timedelta 
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+@login_required(redirect_field_name='login')
 def home(request):
     contexto = {}
 
-    #Datas e horarios
     data_atual = date.today()
-    hora_atual = datetime.now().strftime('%H:%M:%S')
+    hora_atual = datetime.now().strftime('%H:%M:%S')    
     hora= datetime.now()
-    hora_chek = timedelta(hours=hora.hour, minutes= hora.minute, seconds=hora.second)
-    
+    hora_chek = timedelta(hours=hora.hour, minutes= hora.minute, seconds=hora.second)   
         
     rs_data = Reserva.objects.all().order_by('data').filter(status=True)
-
+    
     for rs in rs_data:
-        rs_hora = timedelta(hours=rs.horario.hora_fim.hour, minutes=rs.horario.hora_fim.minute, seconds=rs.horario.hora_fim.second)
-        if rs.data <= data_atual:
-            if hora_chek > rs_hora:
-                rs_data.update(status=False)
-
+        rs_fim = timedelta(hours=rs.horario.hora_fim.hour, minutes=rs.horario.hora_fim.minute, seconds=rs.horario.hora_fim.second)
+        if rs.data < data_atual:
+            rs_data.update(status=False)
+        
+    
     contexto['data_atual']=data_atual
     contexto['hora_atual']=hora_atual
     contexto['reservas'] = rs_data
     
     qntd_reservada_prox=0
-    qntd_reservada_futuro=0
     qntd_reservada=0
     qntd_atual=0
 
+    
     if request.method != 'POST':
         form = ReservaForm(request.POST) 
         contexto['form']= form
         return render(request, 'core/index.html',contexto)
-    
-    return render (request, 'core/index.html',{'somatorio':somatorio})
  
+    
 
-
+@login_required(redirect_field_name='login')
 def reservar(request):
     form = ReservaForm(request.POST)
     data_atual = date.today()
@@ -53,16 +50,18 @@ def reservar(request):
     horario =request.POST.get('horario')
     turma = request.POST.get('turma')
     qntd = int(request.POST.get('quantidade'))
-
     rs_date_hous_turma = Reserva.objects.filter(data=data, horario=horario, turma= turma, status=True).exists()
     rs_date = Reserva.objects.filter(data=data, horario=horario, status=True)
     rs_turma = Reserva.objects.filter( turma=turma, status=True).exists()
     rs_status = Reserva.objects.filter(data=data, horario=horario, turma=turma, status=True).exists()
-
     alocado =0
     for s in rs_date:
         alocado+=s.quantidade
+    
     limite= alocado+qntd
+    print(f'Reserva existe? {rs_status}')
+    print(f'Quantidade alocado: {alocado}')
+    print(f'Limite de Tablets: {limite}')
 
     if  str(data_atual) > data:
         messages.add_message(request,messages.ERROR, 'Impossível registrar datas passadas')
@@ -94,6 +93,6 @@ def reservar(request):
     return redirect('home')    
 
 
-
+@login_required(redirect_field_name='login')
 def comprovante(request):
     return render (request, 'core/reserva.html')
