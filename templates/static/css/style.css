@@ -19,6 +19,7 @@
 
         label {
             color: #6b6b69;
+            
         }
 
         input,
@@ -35,6 +36,14 @@
         }
         footer{
             background-color: #7c7c7a !important;
+        }
+        hr{
+            border-color: #343a40;
+            margin-top: 0;
+        }
+        .color{
+            color: #6b6b69;
+            font-family: 'Cambria';
         }
         .fundo{
             background-color: #96302b !important;
